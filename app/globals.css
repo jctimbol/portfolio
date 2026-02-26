@@ -4,18 +4,20 @@ body {
 }
 
 .landing-section {
-   .fade-in-hidden {
-     opacity: 0;
-     transition: opacity 4s ease;
-   }
-   .fade-in {
-     opacity: 1;
-     transition: opacity 4s ease;
-   }
   position: relative;
   height: 100vh;
   width: 100%;
   overflow: hidden;
+}
+
+.fade-in-hidden {
+  opacity: 0;
+  transition: opacity 4s ease;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 4s ease;
 }
 
 .landing-name {
