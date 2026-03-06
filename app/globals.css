@@ -1,13 +1,31 @@
+* {
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   margin: 0;
   background-color: #faf8eb;
 }
 
-.landing-section {
+.project-section {
   position: relative;
+  z-index: 1;
+  background-color: #faf8eb;
+  border-radius: 20px 20px 0 0;
+  min-height: 100vh;
+}
+
+.landing-section {
+  position: sticky;
+  top: 0;
   height: 100vh;
   width: 100%;
   overflow: hidden;
+  z-index: 0;
 }
 
 .fade-in-hidden {
@@ -21,7 +39,6 @@ body {
 }
 
 .landing-name {
-  opacity: 85%;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -37,19 +54,18 @@ body {
 }
 .slide-in {
   top: clamp(64px, calc(260px - 12vw), 180px);
-  opacity: 0.90;
+  opacity: 0.85;
   transition: top 0.8s cubic-bezier(0.4,0,0.2,1), opacity 0.8s cubic-bezier(0.4,0,0.2,1);
 }
 
 .landing-flowers {
-  opacity: 95%;
   position: absolute;
   left: 50%;
   bottom: clamp(-260px, calc(140px - 30vw), 24px);
   transform: translateX(-50%);
   width: min(92vw, clamp(680px, 78vw, 1160px));
   height: auto;
-  transition: bottom 180ms linear, width 180ms linear;
+  transition: bottom 180ms linear, width 180ms linear, opacity 1s ease;
 }
 
 @media (min-width: 900px) and (max-width: 1600px) {
