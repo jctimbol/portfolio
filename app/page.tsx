@@ -4,7 +4,9 @@ import ProjectSection from "../components/ProjectSection";
 export default function Home() {
   return (
     <main>
-      <LandingSection />
+      <div className="landing-scroll-space">
+        <LandingSection />
+      </div>
       <ProjectSection />
     </main>
   );

@@ -6,17 +6,24 @@
   display: none;
 }
 
+html {
+  overscroll-behavior-y: none;
+}
+
 body {
   margin: 0;
   background-color: #faf8eb;
 }
 
 .project-section {
-  position: relative;
   z-index: 1;
   background-color: #faf8eb;
-  border-radius: 20px 20px 0 0;
   min-height: 100vh;
+  width: 100%;
+}
+
+.landing-scroll-space {
+  height: 280vh;
 }
 
 .landing-section {

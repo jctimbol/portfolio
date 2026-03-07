@@ -8,18 +8,23 @@ import { useState, useEffect } from "react";
 export default function LandingSection() {
   const [showFlower, setShowFlower] = useState(false);
   const [showName, setShowName] = useState(false);
+  // After the name slides in (~1.8s), override CSS transitions so scroll is crisp.
   const [animationsDone, setAnimationsDone] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
+    document.body.style.overflow = "hidden";
     const flowerTimer = setTimeout(() => setShowFlower(true), 100);
     const nameTimer = setTimeout(() => setShowName(true), 1000);
-    // flower fade-in takes 4s starting at 100ms
-    const doneTimer = setTimeout(() => setAnimationsDone(true), 4200);
+    const doneTimer = setTimeout(() => {
+      setAnimationsDone(true);
+      document.body.style.overflow = "";
+    }, 2000);
     return () => {
       clearTimeout(flowerTimer);
       clearTimeout(nameTimer);
       clearTimeout(doneTimer);
+      document.body.style.overflow = "";
     };
   }, []);
 
@@ -32,17 +37,33 @@ export default function LandingSection() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const flowersStyle = animationsDone ? {
-    opacity: 1 - scrollProgress,
-    filter: `blur(${Math.pow(scrollProgress, 0.4) * 32}px)`,
-    transition: "bottom 180ms linear, width 180ms linear",
-  } : undefined;
+  const blur = `blur(${Math.pow(scrollProgress, 0.4) * 32}px)`;
 
-  const nameStyle = animationsDone ? {
-    opacity: 0.85 - scrollProgress * 0.85,
-    filter: `blur(${Math.pow(scrollProgress, 0.4) * 32}px)`,
-    transition: "top 180ms linear, width 180ms linear",
-  } : undefined;
+  // Always apply scroll-driven opacity/filter so the images respond immediately.
+  // Before animationsDone, don't override the CSS transition so the name slide-in
+  // still plays. After animationsDone, override transition to exclude opacity/filter
+  // so scroll feels crisp (no CSS easing lag).
+  const flowersStyle = animationsDone
+    ? {
+        opacity: showFlower ? 1 - scrollProgress : 0,
+        filter: blur,
+        transition: "bottom 180ms linear, width 180ms linear",
+      }
+    : {
+        opacity: showFlower ? 1 - scrollProgress : 0,
+        filter: blur,
+      };
+
+  const nameStyle = animationsDone
+    ? {
+        opacity: showName ? 0.85 - scrollProgress * 0.85 : 0,
+        filter: blur,
+        transition: "top 180ms linear, width 180ms linear",
+      }
+    : {
+        opacity: showName ? 0.85 * (1 - scrollProgress) : 0,
+        filter: blur,
+      };
 
   return (
     <section className="landing-section">
