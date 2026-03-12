@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Miama";
+  src: url("/fonts/Miama.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   scrollbar-width: none;
 }

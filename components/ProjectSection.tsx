@@ -4,7 +4,21 @@ import { useState, useEffect } from "react";
 
 type Phase = "hidden" | "fading" | "visible";
 
-const content = <h1>placeholder</h1>;
+const content = (
+  <h1
+    style={{
+      fontFamily: "Miama",
+      fontWeight: "normal",
+      fontSize: "clamp(3rem, 10vw, 8rem)",
+      textAlign: "center",
+      margin: 0,
+      paddingTop: "4rem",
+      WebkitTextStroke: "2px currentColor",
+    }}
+  >
+    featured work
+  </h1>
+);
 
 export default function ProjectSection() {
   const [phase, setPhase] = useState<Phase>("hidden");
