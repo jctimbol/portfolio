@@ -1,6 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
+import butterfly from "../public/butterfly.png";
+import flourish from "../public/flourish.png";
+import leaves from "../public/leaves.png";
+import fireproof1 from "../public/fireproof1.png";
+import fireproof2 from "../public/fireproof2.png";
+import envest from "../public/envest.png";
+import perch from "../public/perch.png";
+import seene from "../public/seene.png";
 
 type Phase = "hidden" | "fading" | "visible";
 
@@ -117,7 +126,7 @@ export default function ProjectSection() {
           marginTop: "6rem",
         }}
       >
-        {[0, 1].map((i) => (
+        {[fireproof1, fireproof2].map((src, i) => (
           <div
             key={i}
             style={{
@@ -125,9 +134,36 @@ export default function ProjectSection() {
               width: "clamp(150px, 23vw, 340px)",
               aspectRatio: "9 / 19.5",
               borderRadius: "clamp(16px, 2.5vw, 36px)",
+              overflow: "hidden",
+              position: "relative",
             }}
-          />
+          >
+            <div
+              style={{
+                position: "absolute",
+                inset: "3.3% 5%",
+                overflow: "hidden",
+                borderRadius: "clamp(10px, 1.8vw, 26px)",
+              }}
+            >
+              <Image
+                src={src}
+                alt={`Fireproof screenshot ${i + 1}`}
+                fill
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+          </div>
         ))}
+      </div>
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "6rem" }}
+      >
+        <Image
+          src={butterfly}
+          alt="Butterfly"
+          style={{ width: "clamp(160px, 28vw, 420px)", height: "auto" }}
+        />
       </div>
       <div
         style={{
@@ -203,8 +239,28 @@ export default function ProjectSection() {
           style={{
             background: "#000",
             width: "clamp(360px, 80vw, 1100px)",
-            aspectRatio: "16 / 9",
+            aspectRatio: "14.3 / 9",
+            position: "relative",
+            overflow: "hidden",
           }}
+        >
+          <div style={{ position: "absolute", inset: "4% 1.5%" }}>
+            <Image
+              src={envest}
+              alt="Envest screenshot"
+              fill
+              style={{ objectFit: "contain", borderRadius: 0 }}
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "6rem" }}
+      >
+        <Image
+          src={flourish}
+          alt="Flourish"
+          style={{ width: "clamp(200px, 40vw, 600px)", height: "auto" }}
         />
       </div>
       <div
@@ -281,8 +337,28 @@ export default function ProjectSection() {
           style={{
             background: "#000",
             width: "clamp(360px, 80vw, 1100px)",
-            aspectRatio: "16 / 9",
+            aspectRatio: "14.6 / 9",
+            position: "relative",
+            overflow: "hidden",
           }}
+        >
+          <div style={{ position: "absolute", inset: "4% 1.5%" }}>
+            <Image
+              src={perch}
+              alt="Perch screenshot"
+              fill
+              style={{ objectFit: "contain", borderRadius: 0 }}
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "6rem" }}
+      >
+        <Image
+          src={leaves}
+          alt="Leaves"
+          style={{ width: "clamp(200px, 40vw, 600px)", height: "auto" }}
         />
       </div>
       <div
@@ -349,8 +425,14 @@ export default function ProjectSection() {
             background: "#000",
             width: "clamp(360px, 80vw, 1100px)",
             aspectRatio: "16 / 9",
+            position: "relative",
+            overflow: "hidden",
           }}
-        />
+        >
+          <div style={{ position: "absolute", inset: "4% 1.5%" }}>
+            <Image src={seene} alt="Seene screenshot" fill style={{ objectFit: "contain", borderRadius: 0 }} />
+          </div>
+        </div>
       </div>
     </>
   );
