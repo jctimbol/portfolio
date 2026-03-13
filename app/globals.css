@@ -32,23 +32,10 @@ body {
 .project-section {
   z-index: 1;
   background-color: #faf8eb;
-  min-height: 100vh;
+  min-height: 200vh;
   width: 100%;
 }
 
-.project-card {
-  background-color: #000;
-  height: clamp(120px, 18vh, 200px);
-  width: clamp(300px, 60vw, 800px);
-  border-radius: 12px;
-  margin-top: 2.5rem;
-  transform: translateX(-110%);
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.project-card-visible {
-  transform: translateX(0);
-}
 
 .landing-scroll-space {
   height: 280vh;
