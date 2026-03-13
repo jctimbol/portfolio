@@ -39,19 +39,17 @@ export default function LandingSection() {
 
   const blur = `blur(${Math.pow(scrollProgress, 0.4) * 32}px)`;
 
-  // Always apply scroll-driven opacity/filter so the images respond immediately.
-  // Before animationsDone, don't override the CSS transition so the name slide-in
-  // still plays. After animationsDone, override transition to exclude opacity/filter
-  // so scroll feels crisp (no CSS easing lag).
+  const smokeFilter = `url(#flowers-smoke) ${blur}`.trim();
+
   const flowersStyle = animationsDone
     ? {
         opacity: showFlower ? 1 - scrollProgress : 0,
-        filter: blur,
+        filter: smokeFilter,
         transition: "bottom 180ms linear, width 180ms linear",
       }
     : {
         opacity: showFlower ? 1 - scrollProgress : 0,
-        filter: blur,
+        filter: smokeFilter,
       };
 
   const nameStyle = animationsDone
@@ -67,6 +65,38 @@ export default function LandingSection() {
 
   return (
     <section className="landing-section">
+      <svg style={{ position: "absolute", width: 0, height: 0 }}>
+        <defs>
+          <filter
+            id="flowers-smoke"
+            x="-15%"
+            y="-15%"
+            width="130%"
+            height="130%"
+          >
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.012 0.008"
+              numOctaves="1"
+              result="noise"
+            >
+              <animate
+                attributeName="baseFrequency"
+                values="0.012 0.008;0.018 0.013;0.010 0.016;0.015 0.009;0.012 0.008"
+                dur="100s"
+                repeatCount="indefinite"
+              />
+            </feTurbulence>
+            <feDisplacementMap
+              in="SourceGraphic"
+              in2="noise"
+              scale="16"
+              xChannelSelector="R"
+              yChannelSelector="G"
+            />
+          </filter>
+        </defs>
+      </svg>
       <Image
         src={flowers}
         alt="Flowers"

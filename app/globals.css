@@ -45,7 +45,7 @@ body {
   background-size: clamp(1100px, 90%, 1500px) clamp(700px, 80vh, 1100px), clamp(1100px, 90%, 1500px) clamp(700px, 80vh, 1100px);
   background-position: calc(50% + 30vw) 130%, calc(50% - 22vw) 130%;
   background-repeat: no-repeat, no-repeat;
-  opacity: 0.28;
+  opacity: 0.24;
   z-index: 0;
   pointer-events: none;
 }
