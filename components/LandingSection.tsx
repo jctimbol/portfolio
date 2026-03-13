@@ -83,14 +83,14 @@ export default function LandingSection() {
               <animate
                 attributeName="baseFrequency"
                 values="0.012 0.008;0.018 0.013;0.010 0.016;0.015 0.009;0.012 0.008"
-                dur="100s"
+                dur="90s"
                 repeatCount="indefinite"
               />
             </feTurbulence>
             <feDisplacementMap
               in="SourceGraphic"
               in2="noise"
-              scale="16"
+              scale="18"
               xChannelSelector="R"
               yChannelSelector="G"
             />
