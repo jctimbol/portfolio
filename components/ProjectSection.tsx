@@ -30,10 +30,9 @@ export default function ProjectSection() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-
   const card = (
     <div
-style={{
+      style={{
         background: "#000",
         width: "clamp(360px, 80vw, 1100px)",
         aspectRatio: "3.5 / 1",
@@ -46,7 +45,14 @@ style={{
         justifyContent: "flex-start",
       }}
     >
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", width: "100%" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "baseline",
+          width: "100%",
+        }}
+      >
         <span
           style={{
             fontFamily: "'Arial Black', Arial, sans-serif",
@@ -103,7 +109,14 @@ style={{
         featured work
       </h1>
       {card}
-      <div style={{ display: "flex", justifyContent: "center", gap: "2rem", marginTop: "6rem" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "2rem",
+          marginTop: "6rem",
+        }}
+      >
         {[0, 1].map((i) => (
           <div
             key={i}
@@ -115,6 +128,229 @@ style={{
             }}
           />
         ))}
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          marginTop: "6rem",
+        }}
+      >
+        <div
+          style={{
+            background: "#000",
+            width: "clamp(360px, 80vw, 1100px)",
+            aspectRatio: "3.5 / 1",
+            padding: "3% 4%",
+            boxSizing: "border-box",
+            display: "flex",
+            alignItems: "flex-start",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "baseline",
+              width: "100%",
+            }}
+          >
+            <span
+              style={{
+                fontFamily: "'Arial Black', Arial, sans-serif",
+                fontWeight: 900,
+                letterSpacing: "-0.07em",
+                color: "#FAF8EB",
+                fontSize: "clamp(2rem, 7vw, 6.2rem)",
+                lineHeight: 1,
+              }}
+            >
+              ENVEST
+            </span>
+            <span
+              style={{
+                fontFamily: "'Arial Black', Arial, sans-serif",
+                fontWeight: 900,
+                letterSpacing: "-0.07em",
+                color: "#FAF8EB",
+                fontSize: "clamp(1rem, 3.5vw, 3.1rem)",
+                lineHeight: 1,
+              }}
+            >
+              SFHACKS 2026
+            </span>
+          </div>
+          <span
+            style={{
+              fontFamily: "'Abyssinica SIL', serif",
+              color: "#FAF8EB",
+              fontSize: "clamp(0.9rem, 3.2vw, 2.8rem)",
+              lineHeight: 1.3,
+              letterSpacing: "-0.03em",
+              marginTop: "4%",
+            }}
+          >
+            ESG contract + investor portfolio analysis
+          </span>
+        </div>
+      </div>
+      <div
+        style={{ marginTop: "6rem", display: "flex", justifyContent: "center" }}
+      >
+        <div
+          style={{
+            background: "#000",
+            width: "clamp(360px, 80vw, 1100px)",
+            aspectRatio: "16 / 9",
+          }}
+        />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-start",
+          marginTop: "6rem",
+        }}
+      >
+        <div
+          style={{
+            background: "#000",
+            width: "clamp(360px, 80vw, 1100px)",
+            aspectRatio: "3.5 / 1",
+            padding: "3% 4%",
+            boxSizing: "border-box",
+            display: "flex",
+            alignItems: "flex-start",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "baseline",
+              width: "100%",
+            }}
+          >
+            <span
+              style={{
+                fontFamily: "'Arial Black', Arial, sans-serif",
+                fontWeight: 900,
+                letterSpacing: "-0.07em",
+                color: "#FAF8EB",
+                fontSize: "clamp(2rem, 7vw, 6.2rem)",
+                lineHeight: 1,
+              }}
+            >
+              PERCH
+            </span>
+            <span
+              style={{
+                fontFamily: "'Arial Black', Arial, sans-serif",
+                fontWeight: 900,
+                letterSpacing: "-0.07em",
+                color: "#FAF8EB",
+                fontSize: "clamp(1rem, 3.5vw, 3.1rem)",
+                lineHeight: 1,
+              }}
+            >
+              CRUZHACKS 2026
+            </span>
+          </div>
+          <span
+            style={{
+              fontFamily: "'Abyssinica SIL', serif",
+              color: "#FAF8EB",
+              fontSize: "clamp(0.9rem, 3.2vw, 2.8rem)",
+              lineHeight: 1.3,
+              letterSpacing: "-0.03em",
+              marginTop: "4%",
+            }}
+          >
+            Adaptive math tutor
+          </span>
+        </div>
+      </div>
+      <div
+        style={{ marginTop: "6rem", display: "flex", justifyContent: "center" }}
+      >
+        <div
+          style={{
+            background: "#000",
+            width: "clamp(360px, 80vw, 1100px)",
+            aspectRatio: "16 / 9",
+          }}
+        />
+      </div>
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "6rem" }}
+      >
+        <div
+          style={{
+            background: "#000",
+            width: "clamp(360px, 80vw, 1100px)",
+            aspectRatio: "3.5 / 1",
+            padding: "3% 4%",
+            boxSizing: "border-box",
+            display: "flex",
+            alignItems: "flex-start",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "baseline",
+              width: "100%",
+            }}
+          >
+            <span
+              style={{
+                fontFamily: "'Arial Black', Arial, sans-serif",
+                fontWeight: 900,
+                letterSpacing: "-0.07em",
+                color: "#FAF8EB",
+                fontSize: "clamp(2rem, 7vw, 6.2rem)",
+                lineHeight: 1,
+              }}
+            >
+              SEENE
+            </span>
+          </div>
+          <span
+            style={{
+              fontFamily: "'Abyssinica SIL', serif",
+              color: "#FAF8EB",
+              fontSize: "clamp(0.9rem, 3.2vw, 2.8rem)",
+              lineHeight: 1.3,
+              letterSpacing: "-0.03em",
+              marginTop: "4%",
+            }}
+          >
+            Discover Bay Area alternative music
+          </span>
+        </div>
+      </div>
+      <div
+        style={{
+          marginTop: "6rem",
+          display: "flex",
+          justifyContent: "center",
+          paddingBottom: "6rem",
+        }}
+      >
+        <div
+          style={{
+            background: "#000",
+            width: "clamp(360px, 80vw, 1100px)",
+            aspectRatio: "16 / 9",
+          }}
+        />
       </div>
     </>
   );
