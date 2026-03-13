@@ -127,9 +127,17 @@ export default function ProjectSection() {
         }}
       >
         {[
-          { src: fireproof1, href: "https://devpost.com/software/fire-proof" },
-          { src: fireproof2, href: "https://github.com/Tian-Tan/fire-proof" },
-        ].map(({ src, href }, i) => (
+          {
+            src: fireproof1,
+            href: "https://devpost.com/software/fire-proof",
+            label: "React Native, FastAPI, vLLM",
+          },
+          {
+            src: fireproof2,
+            href: "https://github.com/Tian-Tan/fire-proof",
+            label: "PostgreSQL, ElevenLabs, Docker",
+          },
+        ].map(({ src, href, label }, i) => (
           <a
             key={i}
             href={href}
@@ -147,13 +155,15 @@ export default function ProjectSection() {
               textDecoration: "none",
               flexShrink: 0,
             }}
-            onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.04)")}
-            onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "scale(1.04)")
+            }
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
             <div
               style={{
                 position: "absolute",
-                inset: "3.3% 5%",
+                inset: "3.3% 5% 10% 5%",
                 overflow: "hidden",
                 borderRadius: "clamp(10px, 1.8vw, 26px)",
               }}
@@ -165,6 +175,25 @@ export default function ProjectSection() {
                 style={{ objectFit: "cover" }}
               />
             </div>
+            {label && (
+              <span
+                style={{
+                  position: "absolute",
+                  bottom: "3.7%",
+                  left: "5%",
+                  right: "5%",
+                  fontFamily: "'Abyssinica SIL', serif",
+                  color: "#FAF8EB",
+                  fontSize: "clamp(0.5rem, 1.4vw, 1.3rem)",
+                  letterSpacing: "-0.03em",
+                  lineHeight: 1.3,
+                  textAlign: "center",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {label}
+              </span>
+            )}
           </a>
         ))}
       </div>
@@ -255,23 +284,37 @@ export default function ProjectSection() {
             display: "block",
             background: "#000",
             width: "clamp(360px, 80vw, 1100px)",
-            aspectRatio: "14.3 / 9",
-            position: "relative",
-            overflow: "hidden",
+            padding: "2% 1.5% 2.5% 1.5%",
+            boxSizing: "border-box",
             transition: "transform 0.2s ease",
             textDecoration: "none",
+            position: "relative",
           }}
-          onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.02)")}
-          onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.transform = "scale(1.02)")
+          }
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
         >
-          <div style={{ position: "absolute", inset: "4% 1.5%" }}>
-            <Image
-              src={envest}
-              alt="Envest screenshot"
-              fill
-              style={{ objectFit: "contain", borderRadius: 0 }}
-            />
-          </div>
+          <Image
+            src={envest}
+            alt="Envest screenshot"
+            style={{ width: "100%", height: "auto", display: "block" }}
+          />
+          <span
+            style={{
+              display: "block",
+              textAlign: "center",
+              fontFamily: "'Abyssinica SIL', serif",
+              color: "#FAF8EB",
+              fontSize: "clamp(0.75rem, 1.4vw, 1.3rem)",
+              letterSpacing: "-0.03em",
+              lineHeight: 1.3,
+              whiteSpace: "nowrap",
+              marginTop: "3.5%",
+            }}
+          >
+            Next.js, FastAPI, LlamaIndex, MongoDB, Gemini 3 Flash
+          </span>
         </a>
       </div>
       <div
@@ -361,23 +404,37 @@ export default function ProjectSection() {
             display: "block",
             background: "#000",
             width: "clamp(360px, 80vw, 1100px)",
-            aspectRatio: "14.6 / 9",
-            position: "relative",
-            overflow: "hidden",
+            padding: "2% 1.5% 2.5% 1.5%",
+            boxSizing: "border-box",
             transition: "transform 0.2s ease",
             textDecoration: "none",
+            position: "relative",
           }}
-          onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.02)")}
-          onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.transform = "scale(1.02)")
+          }
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
         >
-          <div style={{ position: "absolute", inset: "4% 1.5%" }}>
-            <Image
-              src={perch}
-              alt="Perch screenshot"
-              fill
-              style={{ objectFit: "contain", borderRadius: 0 }}
-            />
-          </div>
+          <Image
+            src={perch}
+            alt="Perch screenshot"
+            style={{ width: "100%", height: "auto", display: "block" }}
+          />
+          <span
+            style={{
+              display: "block",
+              textAlign: "center",
+              fontFamily: "'Abyssinica SIL', serif",
+              color: "#FAF8EB",
+              fontSize: "clamp(0.75rem, 1.4vw, 1.3rem)",
+              letterSpacing: "-0.03em",
+              lineHeight: 1.3,
+              whiteSpace: "nowrap",
+              marginTop: "3.5%",
+            }}
+          >
+            Next.js, FastAPI, MongoDB, Gemini 2.5 Flash, Pix2Text, SymPy
+          </span>
         </a>
       </div>
       <div
@@ -456,18 +513,37 @@ export default function ProjectSection() {
             display: "block",
             background: "#000",
             width: "clamp(360px, 80vw, 1100px)",
-            aspectRatio: "16 / 9",
-            position: "relative",
-            overflow: "hidden",
+            padding: "2% 1.5% 2.5% 1.5%",
+            boxSizing: "border-box",
             transition: "transform 0.2s ease",
             textDecoration: "none",
+            position: "relative",
           }}
-          onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.02)")}
-          onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.transform = "scale(1.02)")
+          }
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
         >
-          <div style={{ position: "absolute", inset: "4% 1.5%" }}>
-            <Image src={seene} alt="Seene screenshot" fill style={{ objectFit: "contain", borderRadius: 0 }} />
-          </div>
+          <Image
+            src={seene}
+            alt="Seene screenshot"
+            style={{ width: "100%", height: "auto", display: "block" }}
+          />
+          <span
+            style={{
+              display: "block",
+              textAlign: "center",
+              fontFamily: "'Abyssinica SIL', serif",
+              color: "#FAF8EB",
+              fontSize: "clamp(0.75rem, 1.4vw, 1.3rem)",
+              letterSpacing: "-0.03em",
+              lineHeight: 1.3,
+              whiteSpace: "nowrap",
+              marginTop: "3.5%",
+            }}
+          >
+            HTML, CSS, JavaScript, Supabase
+          </span>
         </a>
       </div>
     </>
