@@ -55,6 +55,18 @@ body {
   z-index: 1;
 }
 
+@media (max-width: 900px) {
+  .project-section::before {
+    background-position: calc(50% + 30vw) 130%, calc(50% - 35vw) 130%;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-section::before {
+    background-position: calc(50% + 30vw) 130%, calc(50% - 50vw) 130%;
+  }
+}
+
 
 .landing-scroll-space {
   height: 280vh;
