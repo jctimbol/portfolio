@@ -126,17 +126,29 @@ export default function ProjectSection() {
           marginTop: "6rem",
         }}
       >
-        {[fireproof1, fireproof2].map((src, i) => (
-          <div
+        {[
+          { src: fireproof1, href: "https://devpost.com/software/fire-proof" },
+          { src: fireproof2, href: "https://github.com/Tian-Tan/fire-proof" },
+        ].map(({ src, href }, i) => (
+          <a
             key={i}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
+              display: "block",
               background: "#000",
               width: "clamp(150px, 23vw, 340px)",
               aspectRatio: "9 / 19.5",
               borderRadius: "clamp(16px, 2.5vw, 36px)",
               overflow: "hidden",
               position: "relative",
+              transition: "transform 0.2s ease",
+              textDecoration: "none",
+              flexShrink: 0,
             }}
+            onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.04)")}
+            onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
           >
             <div
               style={{
@@ -153,7 +165,7 @@ export default function ProjectSection() {
                 style={{ objectFit: "cover" }}
               />
             </div>
-          </div>
+          </a>
         ))}
       </div>
       <div
@@ -235,14 +247,22 @@ export default function ProjectSection() {
       <div
         style={{ marginTop: "6rem", display: "flex", justifyContent: "center" }}
       >
-        <div
+        <a
+          href="https://github.com/vrajhm/envest"
+          target="_blank"
+          rel="noopener noreferrer"
           style={{
+            display: "block",
             background: "#000",
             width: "clamp(360px, 80vw, 1100px)",
             aspectRatio: "14.3 / 9",
             position: "relative",
             overflow: "hidden",
+            transition: "transform 0.2s ease",
+            textDecoration: "none",
           }}
+          onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.02)")}
+          onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
         >
           <div style={{ position: "absolute", inset: "4% 1.5%" }}>
             <Image
@@ -252,7 +272,7 @@ export default function ProjectSection() {
               style={{ objectFit: "contain", borderRadius: 0 }}
             />
           </div>
-        </div>
+        </a>
       </div>
       <div
         style={{ display: "flex", justifyContent: "center", marginTop: "6rem" }}
@@ -333,14 +353,22 @@ export default function ProjectSection() {
       <div
         style={{ marginTop: "6rem", display: "flex", justifyContent: "center" }}
       >
-        <div
+        <a
+          href="https://devpost.com/software/perch-eq5sim"
+          target="_blank"
+          rel="noopener noreferrer"
           style={{
+            display: "block",
             background: "#000",
             width: "clamp(360px, 80vw, 1100px)",
             aspectRatio: "14.6 / 9",
             position: "relative",
             overflow: "hidden",
+            transition: "transform 0.2s ease",
+            textDecoration: "none",
           }}
+          onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.02)")}
+          onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
         >
           <div style={{ position: "absolute", inset: "4% 1.5%" }}>
             <Image
@@ -350,7 +378,7 @@ export default function ProjectSection() {
               style={{ objectFit: "contain", borderRadius: 0 }}
             />
           </div>
-        </div>
+        </a>
       </div>
       <div
         style={{ display: "flex", justifyContent: "center", marginTop: "6rem" }}
@@ -420,19 +448,27 @@ export default function ProjectSection() {
           paddingBottom: "6rem",
         }}
       >
-        <div
+        <a
+          href="https://seene.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
           style={{
+            display: "block",
             background: "#000",
             width: "clamp(360px, 80vw, 1100px)",
             aspectRatio: "16 / 9",
             position: "relative",
             overflow: "hidden",
+            transition: "transform 0.2s ease",
+            textDecoration: "none",
           }}
+          onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.02)")}
+          onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}
         >
           <div style={{ position: "absolute", inset: "4% 1.5%" }}>
             <Image src={seene} alt="Seene screenshot" fill style={{ objectFit: "contain", borderRadius: 0 }} />
           </div>
-        </div>
+        </a>
       </div>
     </>
   );
