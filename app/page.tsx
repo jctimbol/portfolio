@@ -1,5 +1,5 @@
 import LandingSection from "../components/LandingSection";
-import ProjectSection from "../components/ProjectSection";
+import AboutSection from "@/components/AboutSection";
 
 export default function Home() {
   return (
@@ -7,7 +7,7 @@ export default function Home() {
       <div className="landing-scroll-space">
         <LandingSection />
       </div>
-      <ProjectSection />
+      <AboutSection />
     </main>
   );
 }

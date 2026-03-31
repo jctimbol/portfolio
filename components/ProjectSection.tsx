@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import butterfly from "../public/butterfly.png";
 import flourish from "../public/flourish.png";
@@ -11,33 +10,7 @@ import envest from "../public/envest.png";
 import perch from "../public/perch.png";
 import seene from "../public/seene.png";
 
-type Phase = "hidden" | "fading" | "visible";
-
 export default function ProjectSection() {
-  const [phase, setPhase] = useState<Phase>("hidden");
-  const [opacity, setOpacity] = useState(0);
-
-  useEffect(() => {
-    const onScroll = () => {
-      const vh = window.innerHeight;
-      const fadeStart = vh * 2.0;
-      const fadeEnd = vh * 2.8;
-      const { scrollY } = window;
-
-      if (scrollY >= fadeEnd) {
-        setPhase("visible");
-        setOpacity(1);
-      } else if (scrollY >= fadeStart) {
-        setPhase("fading");
-        setOpacity((scrollY - fadeStart) / (fadeEnd - fadeStart));
-      } else {
-        setPhase("hidden");
-        setOpacity(0);
-      }
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const card = (
     <div
@@ -549,21 +522,5 @@ export default function ProjectSection() {
     </>
   );
 
-  if (phase === "visible") {
-    return <section className="project-section">{content}</section>;
-  }
-
-  return (
-    <>
-      <div style={{ height: "200vh" }} />
-      {phase === "fading" && (
-        <section
-          className="project-section"
-          style={{ position: "fixed", top: 0, opacity, pointerEvents: "none" }}
-        >
-          {content}
-        </section>
-      )}
-    </>
-  );
+  return <section className="project-section">{content}</section>;
 }
