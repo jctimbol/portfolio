@@ -1,5 +1,6 @@
 import LandingSection from "../components/LandingSection";
 import AboutSection from "@/components/AboutSection";
+import ProjectSection from "@/components/ProjectSection";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
         <LandingSection />
       </div>
       <AboutSection />
+      <ProjectSection />
     </main>
   );
 }

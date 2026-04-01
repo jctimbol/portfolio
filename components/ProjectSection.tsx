@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import butterfly from "../public/butterfly.png";
 import flourish from "../public/flourish.png";
@@ -10,7 +11,41 @@ import envest from "../public/envest.png";
 import perch from "../public/perch.png";
 import seene from "../public/seene.png";
 
+// Landing occupies 2.8vh and About occupies 7vh total, so Projects reaches the
+// viewport at 9.8vh. Fade the fixed Projects overlay in during the preceding
+// viewport so About can disappear to the background first.
+const FADE_START_VH = 8.8;
+const FADE_END_VH = 9.8;
+
+type Phase = "hidden" | "fading" | "visible";
+
 export default function ProjectSection() {
+  const [phase, setPhase] = useState<Phase>("hidden");
+  const [opacity, setOpacity] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const vh = window.innerHeight;
+      const { scrollY } = window;
+
+      if (scrollY >= vh * FADE_END_VH) {
+        setPhase("visible");
+        setOpacity(1);
+      } else if (scrollY >= vh * FADE_START_VH) {
+        setPhase("fading");
+        setOpacity(
+          (scrollY - vh * FADE_START_VH) / (vh * (FADE_END_VH - FADE_START_VH)),
+        );
+      } else {
+        setPhase("hidden");
+        setOpacity(0);
+      }
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const card = (
     <div
@@ -522,5 +557,37 @@ export default function ProjectSection() {
     </>
   );
 
-  return <section className="project-section">{content}</section>;
+  return (
+    <>
+      <div style={{ height: "100vh" }} />
+      {phase === "fading" && (
+        <section
+          className="project-section project-transition-overlay"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100vh",
+            opacity,
+            pointerEvents: "none",
+            overflow: "hidden",
+            zIndex: 2,
+          }}
+        >
+          {content}
+        </section>
+      )}
+      <section
+        className="project-section"
+        style={{
+          marginTop: "-100vh",
+          opacity: phase === "visible" ? 1 : 0,
+          pointerEvents: phase === "visible" ? "auto" : "none",
+        }}
+      >
+        {content}
+      </section>
+    </>
+  );
 }

@@ -9,12 +9,14 @@ import wings from "../public/wings.png";
 type Phase = "hidden" | "fading" | "visible";
 
 const HORZ_SCROLL_VH = 5;
+const FADE_OUT_VH = 1;
 
 export default function AboutSection() {
   const [phase, setPhase] = useState<Phase>("hidden");
   const [opacity, setOpacity] = useState(0);
   const [horzProgress, setHorzProgress] = useState(0);
   const [panel2Width, setPanel2Width] = useState(0);
+  const [sectionOpacity, setSectionOpacity] = useState(1);
   const panel2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -30,16 +32,28 @@ export default function AboutSection() {
         setHorzProgress(
           Math.max(0, Math.min(1, (scrollY - fadeEnd) / (vh * HORZ_SCROLL_VH))),
         );
+        const fadeOutStart = fadeEnd + vh * HORZ_SCROLL_VH;
+        const fadeOutEnd = fadeOutStart + vh * FADE_OUT_VH;
+        setSectionOpacity(
+          scrollY >= fadeOutEnd ? 0 :
+          scrollY >= fadeOutStart
+            ? 1 - (scrollY - fadeOutStart) / (vh * FADE_OUT_VH)
+            : 1
+        );
       } else if (scrollY >= fadeStart) {
         setPhase("fading");
         setOpacity((scrollY - fadeStart) / (fadeEnd - fadeStart));
         setHorzProgress(0);
+        setSectionOpacity(1);
       } else {
         setPhase("hidden");
         setOpacity(0);
         setHorzProgress(0);
+        setSectionOpacity(1);
       }
     };
+
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -98,7 +112,7 @@ export default function AboutSection() {
       panel2Width > 0 ? `calc(100vw + ${panel2Width}px)` : "200vw";
 
     return (
-      <div style={{ height: `${(1 + HORZ_SCROLL_VH) * 100}vh` }}>
+      <div style={{ height: `${(1 + HORZ_SCROLL_VH + FADE_OUT_VH) * 100}vh` }}>
         <section
           className="about-section"
           style={{
@@ -107,6 +121,7 @@ export default function AboutSection() {
             height: "100vh",
             overflow: "hidden",
             minHeight: "unset",
+            opacity: sectionOpacity,
           }}
         >
           <div
