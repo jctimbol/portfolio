@@ -58,6 +58,16 @@ body {
   position: relative;
 }
 
+.project-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.project-transition-overlay > * {
+  position: relative;
+  z-index: 1;
+}
+
 .project-section::before,
 .project-transition-overlay::before {
   content: "";
@@ -70,16 +80,6 @@ body {
   opacity: 0.24;
   z-index: 0;
   pointer-events: none;
-}
-
-.project-section > * {
-  position: relative;
-  z-index: 1;
-}
-
-.project-transition-overlay > * {
-  position: relative;
-  z-index: 1;
 }
 
 @media (max-width: 900px) {

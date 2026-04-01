@@ -68,6 +68,13 @@ export default function AboutSection() {
     return () => ro.disconnect();
   }, [phase]);
 
+  const catOpacity =
+    phase === "hidden"
+      ? 0
+      : phase === "fading"
+        ? opacity * 0.9
+        : sectionOpacity * 0.9;
+
   const content = (
     <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
       <h1
@@ -106,6 +113,27 @@ export default function AboutSection() {
     </div>
   );
 
+  const catOverlay = (
+    <img
+      src="/cat.png"
+      alt="Cat"
+      loading="eager"
+      decoding="sync"
+      fetchPriority="high"
+      style={{
+        position: "fixed",
+        right: "clamp(1.5rem, 4vw, 4rem)",
+        bottom: "clamp(-1.75rem, -2.4vw, -0.75rem)",
+        width: "clamp(150px, 20vw, 300px)",
+        height: "auto",
+        opacity: catOpacity,
+        pointerEvents: "none",
+        zIndex: 2,
+        willChange: "opacity",
+      }}
+    />
+  );
+
   if (phase === "visible") {
     const translateX = panel2Width > 0 ? -horzProgress * panel2Width : 0;
     const containerWidth =
@@ -113,6 +141,7 @@ export default function AboutSection() {
 
     return (
       <div style={{ height: `${(1 + HORZ_SCROLL_VH + FADE_OUT_VH) * 100}vh` }}>
+        {catOverlay}
         <section
           className="about-section"
           style={{
@@ -245,6 +274,7 @@ export default function AboutSection() {
 
   return (
     <>
+      {catOverlay}
       <div style={{ height: "200vh" }} />
       {phase === "fading" && (
         <section
