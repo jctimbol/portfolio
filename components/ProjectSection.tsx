@@ -3,10 +3,12 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import butterfly from "../public/butterfly.png";
+import band from "../public/band.png";
 import flourish from "../public/flourish.png";
 import leaves from "../public/leaves.png";
 import fireproof1 from "../public/fireproof1.png";
 import fireproof2 from "../public/fireproof2.png";
+import homerule from "../public/homerule.png";
 import envest from "../public/envest.png";
 import perch from "../public/perch.png";
 import seene from "../public/seene.png";
@@ -452,6 +454,127 @@ export default function ProjectSection() {
           src={leaves}
           alt="Leaves"
           style={{ width: "clamp(200px, 40vw, 600px)", height: "auto" }}
+        />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          marginTop: "6rem",
+        }}
+      >
+        <div
+          style={{
+            background: "#000",
+            width: "clamp(360px, 80vw, 1100px)",
+            aspectRatio: "3.5 / 1",
+            padding: "3% 4%",
+            boxSizing: "border-box",
+            display: "flex",
+            alignItems: "flex-start",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "baseline",
+              width: "100%",
+            }}
+          >
+            <span
+              style={{
+                fontFamily: "'Arial Black', Arial, sans-serif",
+                fontWeight: 900,
+                letterSpacing: "-0.07em",
+                color: "#FAF8EB",
+                fontSize: "clamp(2rem, 7vw, 6.2rem)",
+                lineHeight: 1,
+              }}
+            >
+              HOMERULE
+            </span>
+            <span
+              style={{
+                fontFamily: "'Arial Black', Arial, sans-serif",
+                fontWeight: 900,
+                letterSpacing: "-0.07em",
+                color: "#FAF8EB",
+                fontSize: "clamp(1rem, 3.5vw, 3.1rem)",
+                lineHeight: 1,
+              }}
+            >
+              HH 2026
+            </span>
+          </div>
+          <span
+            style={{
+              fontFamily: "'Abyssinica SIL', serif",
+              color: "#FAF8EB",
+              fontSize: "clamp(0.9rem, 3.2vw, 2.8rem)",
+              lineHeight: 1.3,
+              letterSpacing: "-0.03em",
+              marginTop: "4%",
+            }}
+          >
+            Voice-first East Bay tenant rights assistant
+          </span>
+        </div>
+      </div>
+      <div
+        style={{ marginTop: "6rem", display: "flex", justifyContent: "center" }}
+      >
+        <a
+          href="https://devpost.com/software/homerule"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: "block",
+            background: "#000",
+            width: "clamp(360px, 80vw, 1100px)",
+            padding: "2% 1.5% 2.5% 1.5%",
+            boxSizing: "border-box",
+            transition: "transform 0.2s ease",
+            textDecoration: "none",
+            position: "relative",
+          }}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.transform = "scale(1.02)")
+          }
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+        >
+          <Image
+            src={homerule}
+            alt="Homerule preview"
+            style={{ width: "100%", height: "auto", display: "block" }}
+          />
+          <span
+            style={{
+              display: "block",
+              textAlign: "center",
+              fontFamily: "'Abyssinica SIL', serif",
+              color: "#FAF8EB",
+              fontSize: "clamp(0.75rem, 1.4vw, 1.3rem)",
+              letterSpacing: "-0.03em",
+              lineHeight: 1.3,
+              whiteSpace: "nowrap",
+              marginTop: "3.5%",
+            }}
+          >
+            Next.js, FastAPI, Perplexity (sonar + sonar-pro), ElevenLabs,
+            MapLibre
+          </span>
+        </a>
+      </div>
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "6rem" }}
+      >
+        <Image
+          src={band}
+          alt="Band"
+          style={{ width: "clamp(220px, 42vw, 620px)", height: "auto" }}
         />
       </div>
       <div
