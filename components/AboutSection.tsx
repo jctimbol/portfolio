@@ -1,18 +1,21 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import birds from "../public/birds.png";
 import phone from "../public/phone.png";
+import wings from "../public/wings.png";
 
 type Phase = "hidden" | "fading" | "visible";
 
-const HORZ_SCROLL_VH = 3;
+const HORZ_SCROLL_VH = 5;
 
 export default function AboutSection() {
   const [phase, setPhase] = useState<Phase>("hidden");
   const [opacity, setOpacity] = useState(0);
   const [horzProgress, setHorzProgress] = useState(0);
+  const [panel2Width, setPanel2Width] = useState(0);
+  const panel2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => {
@@ -40,6 +43,16 @@ export default function AboutSection() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    if (!panel2Ref.current) return;
+    const ro = new ResizeObserver(() => {
+      if (panel2Ref.current) setPanel2Width(panel2Ref.current.scrollWidth);
+    });
+    ro.observe(panel2Ref.current);
+    setPanel2Width(panel2Ref.current.scrollWidth);
+    return () => ro.disconnect();
+  }, [phase]);
 
   const content = (
     <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
@@ -80,6 +93,10 @@ export default function AboutSection() {
   );
 
   if (phase === "visible") {
+    const translateX = panel2Width > 0 ? -horzProgress * panel2Width : 0;
+    const containerWidth =
+      panel2Width > 0 ? `calc(100vw + ${panel2Width}px)` : "200vw";
+
     return (
       <div style={{ height: `${(1 + HORZ_SCROLL_VH) * 100}vh` }}>
         <section
@@ -94,8 +111,8 @@ export default function AboutSection() {
         >
           <div
             style={{
-              transform: `translateX(${-horzProgress * 100}vw)`,
-              width: "200vw",
+              transform: `translateX(${translateX}px)`,
+              width: containerWidth,
               height: "100%",
               display: "flex",
             }}
@@ -104,40 +121,106 @@ export default function AboutSection() {
               {content}
             </div>
             <div
+              ref={panel2Ref}
               style={{
-                width: "100vw",
+                width: "max-content",
                 height: "100%",
                 flexShrink: 0,
                 display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
-                justifyContent: "center",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "flex-start",
                 paddingLeft: "clamp(110px, 12vw, 200px)",
+                paddingRight: "clamp(2rem, 4vw, 6rem)",
               }}
             >
-              <p style={{
-                fontFamily: "'Charis SIL', serif",
-                fontWeight: "bold",
-                fontSize: "clamp(1.5rem, 2.2vw, 2rem)",
-                letterSpacing: "-0.05em",
-                lineHeight: 1.5,
-                margin: "0 0 1.5rem -18vw",
-                transform: "translateY(-6vh)",
-                maxWidth: "clamp(320px, 40vw, 720px)",
-              }}>
-                i build full-stack systems, incorporating tech like ai/ml, networks, and mobile devices.
-              </p>
-              <Image
-                src={phone}
-                alt="Phone"
+              <div
                 style={{
-                  width: "clamp(280px, 42vw, 600px)",
-                  height: "auto",
-                  maxHeight: "50vh",
-                  transform: "scaleX(-1)",
-                  opacity: 0.95,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  justifyContent: "center",
+                  flexShrink: 0,
                 }}
-              />
+              >
+                <p
+                  style={{
+                    fontFamily: "'Charis SIL', serif",
+                    fontWeight: "bold",
+                    fontSize: "clamp(1.5rem, 2.2vw, 2rem)",
+                    letterSpacing: "-0.05em",
+                    lineHeight: 1.5,
+                    margin: "0 0 1.5rem -18vw",
+                    transform: "translateY(-6vh)",
+                    maxWidth: "clamp(320px, 40vw, 920px)",
+                  }}
+                >
+                  i build full-stack systems, incorporating tech like ai/ml,
+                  networks, and mobile devices.
+                </p>
+                <Image
+                  src={phone}
+                  alt="Phone"
+                  style={{
+                    width: "clamp(200px, 42vw, 600px)",
+                    height: "auto",
+                    maxHeight: "50vh",
+                    transform: "scaleX(-1)",
+                    opacity: 0.95,
+                  }}
+                />
+                <p
+                  style={{
+                    fontFamily: "'Abyssinica SIL', serif",
+                    fontSize: "clamp(1.2rem, 1.8vw, 2rem)",
+                    letterSpacing: "-0.05em",
+                    lineHeight: 1.5,
+                    margin: "7rem 0 0 clamp(200px, 38vw, 480px)",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  (i also like making things that look cool)
+                </p>
+              </div>
+              <div
+                style={{
+                  position: "relative",
+                  flexShrink: 0,
+                  marginLeft: "clamp(2rem, 4vw, 6rem)",
+                }}
+              >
+                <Image
+                  src={wings}
+                  alt="Wings"
+                  style={{
+                    width: "clamp(420px, 80vw, 1200px)",
+                    height: "auto",
+                    maxHeight: "90vh",
+                    display: "block",
+                    opacity: 0.2,
+                  }}
+                />
+                <p
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    margin: 0,
+                    fontFamily: "'Charis SIL', serif",
+                    fontWeight: "bold",
+                    fontSize: "clamp(1rem, 1.4vw, 1.6rem)",
+                    letterSpacing: "-0.05em",
+                    lineHeight: 1.6,
+                    textAlign: "center",
+                    width: "max-content",
+                    maxWidth: "100%",
+                  }}
+                >
+                  currently, i do systems research + tutoring @ sjsu and am an
+                  incoming ai/ml fellow @ cornell tech!
+                </p>
+              </div>
             </div>
           </div>
         </section>
