@@ -7,16 +7,29 @@ export default function LandingSection() {
     <section className="landing-section">
       <Image
         src={flowers}
-        alt="Flowers"
-        className="landing-flowers"
+        alt=""
+        className="landing-flower-bg"
         priority
+        aria-hidden="true"
       />
-      <Image
-        src={name}
-        alt="Name graphic"
-        className="landing-name"
-        priority
-      />
+      <div className="landing-content">
+        <Image
+          src={name}
+          alt="Jay Timbol"
+          className="landing-name"
+          priority
+        />
+        <p className="landing-intro">
+          hi! my name is jay and i&apos;m a swe major @ sjsu!
+          <br />
+          read more <a href="#about">about me</a> and my...
+        </p>
+        <nav className="landing-links" aria-label="Landing links">
+          <a href="#about">experience</a>
+          <a href="#projects">projects</a>
+          <a href="#contact">contact info</a>
+        </nav>
+      </div>
     </section>
   );
 }

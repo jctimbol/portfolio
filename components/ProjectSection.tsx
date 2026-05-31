@@ -618,7 +618,7 @@ export default function ProjectSection() {
   );
 
   return (
-    <section className="project-section">
+    <section id="projects" className="project-section">
       {content}
     </section>
   );
