@@ -54,11 +54,13 @@ export default function AboutSection() {
       >
         <div
           style={{
-            display: "grid",
-            gap: "clamp(2rem, 5vw, 5rem)",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "2rem",
             width: "100%",
-            maxWidth: "1120px",
+            maxWidth: "760px",
+            textAlign: "center",
           }}
         >
           <p
@@ -74,32 +76,30 @@ export default function AboutSection() {
             i build full-stack systems, incorporating tech like ai/ml,
             networks, and mobile devices.
           </p>
-          <div>
-            <p
-              style={{
-                fontFamily: "'Charis SIL', serif",
-                fontWeight: "bold",
-                fontSize: "clamp(1rem, 1.4vw, 1.6rem)",
-                letterSpacing: "-0.05em",
-                lineHeight: 1.6,
-                margin: 0,
-              }}
-            >
-              currently, i do systems research + tutoring @ sjsu and am an
-              incoming ai/ml fellow @ cornell tech!
-            </p>
-            <p
-              style={{
-                fontFamily: "'Abyssinica SIL', serif",
-                fontSize: "clamp(1.2rem, 1.8vw, 2rem)",
-                letterSpacing: "-0.05em",
-                lineHeight: 1.5,
-                margin: "2rem 0 0",
-              }}
-            >
-              (i also like making things that look cool)
-            </p>
-          </div>
+          <p
+            style={{
+              fontFamily: "'Charis SIL', serif",
+              fontWeight: "bold",
+              fontSize: "clamp(1rem, 1.4vw, 1.6rem)",
+              letterSpacing: "-0.05em",
+              lineHeight: 1.6,
+              margin: 0,
+            }}
+          >
+            currently, i do systems research + tutoring @ sjsu and am an
+            incoming ai/ml fellow @ cornell tech!
+          </p>
+          <p
+            style={{
+              fontFamily: "'Abyssinica SIL', serif",
+              fontSize: "clamp(1.2rem, 1.8vw, 2rem)",
+              letterSpacing: "-0.05em",
+              lineHeight: 1.5,
+              margin: 0,
+            }}
+          >
+            (i also like making things that look cool)
+          </p>
         </div>
       </section>
     </>
