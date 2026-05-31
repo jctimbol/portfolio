@@ -3,6 +3,7 @@
   src: url("/fonts/Miama.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -10,6 +11,7 @@
   src: url("/fonts/CharisSIL-Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -17,6 +19,7 @@
   src: url("/fonts/AbyssinicaSIL.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 * {
@@ -110,16 +113,6 @@ body {
   z-index: 0;
 }
 
-.fade-in-hidden {
-  opacity: 0;
-  transition: opacity 4s ease;
-}
-
-.fade-in {
-  opacity: 1;
-  transition: opacity 4s ease;
-}
-
 .landing-name {
   position: absolute;
   left: 50%;
@@ -147,7 +140,6 @@ body {
   transform: translateX(-50%);
   width: min(92vw, clamp(680px, 78vw, 1160px));
   height: auto;
-  transition: bottom 180ms linear, width 180ms linear, opacity 1s ease;
 }
 
 @media (min-width: 900px) and (max-width: 1600px) {

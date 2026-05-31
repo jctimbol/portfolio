@@ -6,7 +6,6 @@ import flowers from "../public/flowers.jpeg";
 import { useState, useEffect } from "react";
 
 export default function LandingSection() {
-  const [showFlower, setShowFlower] = useState(false);
   const [showName, setShowName] = useState(false);
   // After the name slides in (~1.8s), override CSS transitions so scroll is crisp.
   const [animationsDone, setAnimationsDone] = useState(false);
@@ -14,14 +13,12 @@ export default function LandingSection() {
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    const flowerTimer = setTimeout(() => setShowFlower(true), 100);
     const nameTimer = setTimeout(() => setShowName(true), 1000);
     const doneTimer = setTimeout(() => {
       setAnimationsDone(true);
       document.body.style.overflow = "";
     }, 2000);
     return () => {
-      clearTimeout(flowerTimer);
       clearTimeout(nameTimer);
       clearTimeout(doneTimer);
       document.body.style.overflow = "";
@@ -41,16 +38,11 @@ export default function LandingSection() {
 
   const smokeFilter = `url(#flowers-smoke) ${blur}`.trim();
 
-  const flowersStyle = animationsDone
-    ? {
-        opacity: showFlower ? 1 - scrollProgress : 0,
-        filter: smokeFilter,
-        transition: "bottom 180ms linear, width 180ms linear",
-      }
-    : {
-        opacity: showFlower ? 1 - scrollProgress : 0,
-        filter: smokeFilter,
-      };
+  const flowersStyle = {
+    opacity: 1 - scrollProgress,
+    filter: smokeFilter,
+    transition: "none",
+  };
 
   const nameStyle = animationsDone
     ? {
@@ -79,14 +71,7 @@ export default function LandingSection() {
               baseFrequency="0.012 0.008"
               numOctaves="1"
               result="noise"
-            >
-              <animate
-                attributeName="baseFrequency"
-                values="0.012 0.008;0.018 0.013;0.010 0.016;0.015 0.009;0.012 0.008"
-                dur="90s"
-                repeatCount="indefinite"
-              />
-            </feTurbulence>
+            />
             <feDisplacementMap
               in="SourceGraphic"
               in2="noise"
@@ -100,7 +85,7 @@ export default function LandingSection() {
       <Image
         src={flowers}
         alt="Flowers"
-        className={`landing-flowers ${showFlower ? "fade-in" : "fade-in-hidden"}`}
+        className="landing-flowers"
         style={flowersStyle}
         priority
       />
