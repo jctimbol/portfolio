@@ -39,19 +39,6 @@ body {
   background-color: #faf8eb;
 }
 
-.about-intro-text {
-  position: absolute;
-  bottom: clamp(14vh, calc(34vh - 8vw), 28vh);
-  right: clamp(5vw, 21vw, 21vw);
-  font-family: 'Abyssinica SIL', serif;
-  font-size: clamp(1.4rem, 2vw, 2.4rem);
-  letter-spacing: -0.05em;
-  line-height: 1.6;
-  margin: 0;
-  max-width: 36ch;
-  text-align: center;
-}
-
 .project-section,
 .about-section {
   z-index: 1;
