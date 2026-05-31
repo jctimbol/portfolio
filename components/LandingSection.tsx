@@ -5,13 +5,19 @@ import flowers from "../public/flowers.jpeg";
 export default function LandingSection() {
   return (
     <section className="landing-section">
-      <Image
-        src={flowers}
-        alt=""
-        className="landing-flower-bg"
-        priority
-        aria-hidden="true"
-      />
+      <div className="landing-flower-bg" aria-hidden="true">
+        <Image
+          src={flowers}
+          alt=""
+          className="landing-flower-img landing-flower-main"
+          priority
+        />
+        <Image
+          src={flowers}
+          alt=""
+          className="landing-flower-img landing-flower-halftone"
+        />
+      </div>
       <div className="landing-content">
         <Image
           src={name}
