@@ -262,7 +262,7 @@ body {
 
 .project-list {
   width: min(78vw, 1380px);
-  margin: clamp(3rem, 5vh, 5rem) auto 0;
+  margin: clamp(4.5rem, 8vh, 7rem) auto 0;
 }
 
 .project-entry {
@@ -304,7 +304,7 @@ body {
 }
 
 .project-description {
-  max-width: 1180px;
+  max-width: 1360px;
   margin: 0.7rem 0 0;
   font-size: clamp(1.35rem, 2vw, 2.5rem);
   line-height: 1.12;
