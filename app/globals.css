@@ -32,6 +32,13 @@
 
 html {
   overscroll-behavior-y: none;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
@@ -66,7 +73,8 @@ body {
 .landing-content {
   position: absolute;
   left: clamp(2.3rem, 14vw, 7rem);
-  top: clamp(6.5rem, calc(28rem - 19vw), 21rem);
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 1;
   max-width: min(clamp(330px, 76vw, 1400px), 88vw);
 }
@@ -77,6 +85,70 @@ body {
   max-width: min(100%, 78vw);
   height: auto;
   opacity: 0.8;
+}
+
+@media (max-width: 767px) {
+  .landing-section {
+    display: grid;
+    place-items: center;
+    padding: clamp(1.5rem, 4vw, 4rem);
+    box-sizing: border-box;
+  }
+
+  .landing-content {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: min(
+      clamp(340px, 62vw, 1120px),
+      calc(100vw - clamp(3rem, 8vw, 8rem))
+    );
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .landing-name {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1180px) {
+  .landing-scroll-space {
+    height: auto;
+    min-height: 0;
+  }
+
+  .landing-section {
+    display: grid;
+    align-items: center;
+    height: auto;
+    min-height: clamp(44rem, 88vw, 52.25rem);
+    padding: clamp(5.5rem, 11vw, 8rem) clamp(2.3rem, 10vw, 7rem)
+      clamp(2.75rem, 6vw, 4.5rem);
+    box-sizing: border-box;
+  }
+
+  .landing-content {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    justify-self: start;
+    max-width: min(clamp(520px, 76vw, 900px), 88vw);
+  }
+
+  .landing-name {
+    width: min(clamp(520px, 62vw, 900px), 100%);
+    max-width: none;
+  }
+
+  .landing-flower-bg {
+    left: 50%;
+    width: min(88vw, 850px);
+    transform: translateX(-50%);
+  }
 }
 
 .landing-intro {
@@ -148,7 +220,11 @@ body {
 }
 
 .about-hero {
-  min-height: 100svh;
+  --about-bird-top: clamp(11.5rem, calc(16rem - 4vw), 19rem);
+  --about-bird-height: clamp(26.25rem, 46.4vw, 46.75rem);
+  min-height: calc(
+    var(--about-bird-top) + var(--about-bird-height) + clamp(1rem, 2vw, 2rem)
+  );
   overflow: hidden;
   padding: clamp(3rem, calc(11rem - 7vw), 8.5rem) 0 clamp(3rem, 7vh, 5rem);
   box-sizing: border-box;
@@ -157,7 +233,7 @@ body {
 .about-bird-bg {
   position: absolute;
   left: 50%;
-  top: clamp(11.5rem, calc(16rem - 4vw), 19rem);
+  top: var(--about-bird-top);
   bottom: auto;
   width: clamp(650px, 72vw, 1160px);
   height: auto;
@@ -165,6 +241,12 @@ body {
   mix-blend-mode: multiply;
   pointer-events: none;
   transform: translateX(clamp(-70%, calc(-96% + 4vw), -52%));
+}
+
+@media (min-width: 1181px) {
+  .about-bird-bg {
+    transform: translateX(-96%);
+  }
 }
 
 .about-title {
@@ -204,7 +286,7 @@ body {
   z-index: 1;
   width: 100%;
   min-height: unset;
-  padding: clamp(2.5rem, 6vh, 4rem) 0 clamp(4rem, 9vh, 8rem);
+  padding: clamp(2rem, 4vh, 3rem) 0;
   box-sizing: border-box;
   overflow: hidden;
   background-color: #faf8eb;
@@ -296,7 +378,7 @@ body {
 
 .featured-work {
   min-height: unset;
-  padding: clamp(2.5rem, 6vh, 4rem) 0 clamp(4rem, 9vh, 8rem);
+  padding: clamp(2rem, 4vh, 3rem) 0 clamp(4rem, 9vh, 8rem);
   box-sizing: border-box;
 }
 
@@ -392,7 +474,6 @@ body {
   align-items: center;
   justify-content: center;
   gap: clamp(1.5rem, 4vw, 4rem);
-  min-height: clamp(0px, calc(88vw - 18rem), 620px);
   margin: clamp(2rem, 5vh, 4rem) auto 0;
 }
 

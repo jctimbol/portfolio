@@ -31,7 +31,7 @@ export default function LandingSection() {
           read more <a href="#about">about me</a> and my...
         </p>
         <nav className="landing-links" aria-label="Landing links">
-          <a href="#about">experience</a>
+          <a href="#experience">experience</a>
           <a href="#projects">projects</a>
           <a href="#contact">contact info</a>
         </nav>
