@@ -49,12 +49,14 @@ body {
 }
 
 .landing-scroll-space {
-  height: 100vh;
+  height: 100svh;
+  min-height: 100vh;
 }
 
 .landing-section {
   position: relative;
-  height: 100vh;
+  height: 100svh;
+  min-height: 100vh;
   width: 100%;
   overflow: hidden;
   z-index: 0;
@@ -63,25 +65,25 @@ body {
 
 .landing-content {
   position: absolute;
-  left: clamp(2rem, 6vw, 7rem);
-  top: clamp(6.5rem, 18vh, 13rem);
+  left: clamp(2.3rem, 14vw, 7rem);
+  top: clamp(6.5rem, calc(28rem - 19vw), 21rem);
   z-index: 1;
-  max-width: min(88vw, 1400px);
+  max-width: min(clamp(330px, 76vw, 1400px), 88vw);
 }
 
 .landing-name {
   display: block;
-  width: clamp(520px, 62vw, 1120px);
-  max-width: 100%;
+  width: clamp(340px, 62vw, 1120px);
+  max-width: min(100%, 78vw);
   height: auto;
   opacity: 0.8;
 }
 
 .landing-intro {
-  margin: clamp(1.8rem, 4vw, 3rem) 0 0;
+  margin: clamp(1.2rem, 3vw, 3rem) 0 0;
   font-family: "Abyssinica SIL", serif;
-  font-size: clamp(2rem, 3.2vw, 4.2rem);
-  line-height: 1.12;
+  font-size: clamp(1.35rem, 3.2vw, 4.2rem);
+  line-height: 1.08;
   letter-spacing: -0.05em;
   color: #11110f;
 }
@@ -98,22 +100,23 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: clamp(1.2rem, 2.6vw, 2.6rem);
-  margin-top: clamp(2rem, 4vw, 3rem);
+  gap: clamp(0.85rem, 2vw, 2.6rem);
+  margin-top: clamp(1.4rem, 3.2vw, 3rem);
   font-family: "Abyssinica SIL", serif;
-  font-size: clamp(2rem, 3.1vw, 4rem);
+  font-size: clamp(1.35rem, 3.1vw, 4rem);
   line-height: 1;
   letter-spacing: -0.05em;
 }
 
 .landing-flower-bg {
   position: absolute;
-  right: clamp(-18rem, -8vw, -2rem);
-  top: clamp(-4rem, -2vh, 0rem);
+  left: clamp(50%, calc(96vw - 16rem), 73%);
+  top: clamp(-4rem, calc(10rem - 10vw), 7rem);
   width: clamp(760px, 72vw, 1350px);
   height: auto;
   opacity: 0.15;
   pointer-events: none;
+  transform: translateX(-47%);
 }
 
 .landing-flower-img {
@@ -144,49 +147,24 @@ body {
   mask-composite: intersect;
 }
 
-@media (max-width: 800px) {
-  .landing-content {
-    left: clamp(1.25rem, 6vw, 2rem);
-    top: clamp(4rem, 11vh, 6.5rem);
-    max-width: calc(100vw - 2.5rem);
-  }
-
-  .landing-name {
-    width: min(100%, 620px);
-  }
-
-  .landing-intro {
-    font-size: clamp(1.55rem, 8vw, 2.6rem);
-  }
-
-  .landing-links {
-    font-size: clamp(1.7rem, 9vw, 3rem);
-  }
-
-  .landing-flower-bg {
-    right: -17rem;
-    top: 11vh;
-    width: 880px;
-    opacity: 0.15;
-  }
-}
-
 .about-hero {
-  min-height: 100vh;
+  min-height: 100svh;
   overflow: hidden;
-  padding: clamp(3rem, 7vh, 5rem) clamp(1.5rem, 8vw, 10rem);
+  padding: clamp(3rem, calc(11rem - 7vw), 8.5rem) 0 clamp(3rem, 7vh, 5rem);
   box-sizing: border-box;
 }
 
 .about-bird-bg {
   position: absolute;
-  left: clamp(-16rem, -12vw, -4rem);
-  bottom: clamp(0rem, 2vw, 3rem);
-  width: clamp(760px, 56vw, 1160px);
+  left: 50%;
+  top: clamp(11.5rem, calc(16rem - 4vw), 19rem);
+  bottom: auto;
+  width: clamp(650px, 72vw, 1160px);
   height: auto;
   opacity: 0.14;
   mix-blend-mode: multiply;
   pointer-events: none;
+  transform: translateX(clamp(-70%, calc(-96% + 4vw), -52%));
 }
 
 .about-title {
@@ -194,7 +172,7 @@ body {
   z-index: 1;
   margin: 0;
   font-family: "Miama", serif;
-  font-size: clamp(4.5rem, 7vw, 8rem);
+  font-size: clamp(4.35rem, 8vw, 8rem);
   font-weight: normal;
   line-height: 0.9;
   text-align: center;
@@ -207,8 +185,8 @@ body {
   width: min(74vw, 1420px);
   margin: clamp(4rem, 9vh, 7rem) auto 0;
   font-family: "Abyssinica SIL", serif;
-  font-size: clamp(2.2rem, 3.3vw, 4.1rem);
-  line-height: 1.16;
+  font-size: clamp(1.35rem, 2.8vw, 3.45rem);
+  line-height: 1.12;
   letter-spacing: -0.05em;
   color: #11110f;
 }
@@ -218,30 +196,7 @@ body {
 }
 
 .about-copy p + p {
-  margin-top: clamp(3rem, 8vh, 5.5rem);
-}
-
-@media (max-width: 800px) {
-  .about-hero {
-    padding: clamp(2.5rem, 7vh, 4rem) clamp(1.25rem, 6vw, 2rem);
-  }
-
-  .about-bird-bg {
-    left: -14rem;
-    bottom: 2rem;
-    width: 760px;
-    opacity: 0.12;
-  }
-
-  .about-title {
-    font-size: clamp(4rem, 20vw, 6rem);
-  }
-
-  .about-copy {
-    width: 100%;
-    margin-top: clamp(3rem, 8vh, 5rem);
-    font-size: clamp(1.8rem, 9vw, 2.8rem);
-  }
+  margin-top: clamp(2.5rem, 6vh, 5.5rem);
 }
 
 .experience-section {
@@ -249,7 +204,7 @@ body {
   z-index: 1;
   width: 100%;
   min-height: unset;
-  padding: clamp(2.5rem, 6vh, 4rem) 0 clamp(5rem, 10vh, 8rem);
+  padding: clamp(2.5rem, 6vh, 4rem) 0 clamp(4rem, 9vh, 8rem);
   box-sizing: border-box;
   overflow: hidden;
   background-color: #faf8eb;
@@ -259,9 +214,9 @@ body {
   position: absolute;
   left: 50%;
   top: clamp(12rem, 24vh, 19rem);
-  width: clamp(860px, 92vw, 1720px);
+  width: clamp(820px, 92vw, 1720px);
   height: auto;
-  opacity: 0.14;
+  opacity: 0.13;
   mix-blend-mode: multiply;
   pointer-events: none;
   transform: translateX(-50%);
@@ -282,19 +237,22 @@ body {
 .experience-list {
   position: relative;
   z-index: 1;
-  width: min(78vw, 1380px);
-  margin: clamp(4.5rem, 8vh, 7rem) auto 0;
+  width: min(
+    calc(100vw - clamp(2.5rem, calc(40vw - 10rem), 22vw)),
+    1380px
+  );
+  margin: clamp(2.5rem, calc(2rem + 4vw), 7rem) auto 0;
 }
 
 .experience-entry + .experience-entry {
-  margin-top: clamp(5rem, 11vh, 9.5rem);
+  margin-top: clamp(3.4rem, calc(2rem + 6vw), 9.5rem);
 }
 
 .experience-heading {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: clamp(0.9rem, 2vw, 2rem);
+  gap: clamp(0.65rem, 2vw, 2rem);
 }
 
 .experience-company {
@@ -317,72 +275,28 @@ body {
 }
 
 .experience-role {
-  font-size: clamp(1.2rem, 1.65vw, 2rem);
+  flex-shrink: 0;
+  font-size: clamp(1.1rem, 1.65vw, 2rem);
   line-height: 1;
+  white-space: nowrap;
 }
 
 .experience-description {
   max-width: 1360px;
-  margin-top: 0.7rem;
+  margin-top: clamp(0.7rem, 1vw, 0.9rem);
   font-size: clamp(1.2rem, 1.7vw, 2.1rem);
   line-height: 1.12;
 }
 
 .experience-dates {
-  margin-top: 0.7rem;
+  margin-top: clamp(0.7rem, 1vw, 0.9rem);
   font-size: clamp(1.2rem, 1.7vw, 2.1rem);
   line-height: 1.12;
 }
 
-@media (max-width: 800px) {
-  .experience-section {
-    padding: clamp(2.5rem, 7vh, 4rem) 0 clamp(4rem, 9vh, 6rem);
-  }
-
-  .experience-wings-bg {
-    top: clamp(13rem, 25vh, 18rem);
-    width: 820px;
-    opacity: 0.12;
-  }
-
-  .experience-list {
-    width: calc(100vw - 2.5rem);
-    margin-top: clamp(2.5rem, 5vh, 4rem);
-  }
-
-  .experience-entry + .experience-entry {
-    margin-top: clamp(3.4rem, 8.5vh, 6rem);
-  }
-
-  .experience-heading {
-    gap: 0.65rem;
-  }
-
-  .experience-role {
-    margin-top: 0;
-    white-space: normal;
-  }
-
-  .experience-description,
-  .experience-dates {
-    margin-top: 0.9rem;
-  }
-}
-
-@media (min-width: 1100px) {
-  .experience-heading {
-    flex-wrap: nowrap;
-  }
-
-  .experience-role {
-    flex-shrink: 0;
-    white-space: nowrap;
-  }
-}
-
 .featured-work {
   min-height: unset;
-  padding: clamp(2.5rem, 6vh, 4rem) 0 clamp(5rem, 10vh, 8rem);
+  padding: clamp(2.5rem, 6vh, 4rem) 0 clamp(4rem, 9vh, 8rem);
   box-sizing: border-box;
 }
 
@@ -397,12 +311,15 @@ body {
 }
 
 .project-list {
-  width: min(78vw, 1380px);
-  margin: clamp(4.5rem, 8vh, 7rem) auto 0;
+  width: min(
+    calc(100vw - clamp(2.5rem, calc(40vw - 10rem), 22vw)),
+    1380px
+  );
+  margin: clamp(2.5rem, calc(2rem + 4vw), 7rem) auto 0;
 }
 
 .project-entry {
-  margin-top: clamp(6rem, 13vh, 11rem);
+  margin-top: clamp(4rem, calc(2rem + 7vw), 11rem);
 }
 
 .project-entry:first-child {
@@ -412,16 +329,16 @@ body {
 .project-separator {
   display: flex;
   justify-content: center;
-  margin-top: clamp(3.4rem, 6.8vh, 5.6rem);
+  margin-top: clamp(2.8rem, calc(2rem + 3vw), 5.6rem);
 }
 
 .project-separator + .project-entry {
-  margin-top: clamp(3.4rem, 7.6vh, 6.6rem);
+  margin-top: clamp(2.8rem, calc(2rem + 3.5vw), 6.6rem);
 }
 
 .project-separator-image {
   display: block;
-  width: clamp(140px, 18vw, 260px);
+  width: clamp(115px, 42vw, 260px);
   height: auto;
   opacity: 0.9;
   pointer-events: none;
@@ -429,14 +346,14 @@ body {
 }
 
 .project-separator-image-large {
-  width: clamp(220px, 34vw, 460px);
+  width: clamp(170px, 70vw, 460px);
 }
 
 .project-heading-link {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: clamp(0.9rem, 2vw, 2rem);
+  gap: clamp(0.65rem, 2vw, 2rem);
   width: fit-content;
   color: #11110f;
   text-decoration: none;
@@ -464,23 +381,24 @@ body {
 
 .project-description {
   max-width: 1360px;
-  margin: 0.7rem 0 0;
+  margin: clamp(0.7rem, 1vw, 0.9rem) 0 0;
   font-size: clamp(1.2rem, 1.7vw, 2.1rem);
   line-height: 1.12;
 }
 
 .project-media {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: clamp(1.5rem, 4vw, 4rem);
-  min-height: clamp(360px, 44vh, 620px);
+  min-height: clamp(0px, calc(88vw - 18rem), 620px);
   margin: clamp(2rem, 5vh, 4rem) auto 0;
 }
 
 .project-frame {
   display: block;
-  width: clamp(360px, 80vw, 1100px);
+  width: min(clamp(360px, 80vw, 1100px), 100%);
   padding: 2% 1.5%;
   box-sizing: border-box;
   background: #000;
@@ -508,7 +426,7 @@ body {
 }
 
 .project-media-phone .project-frame {
-  width: clamp(150px, 23vw, 340px);
+  width: clamp(150px, calc(18vw + 5rem), 340px);
   aspect-ratio: 9 / 19.5;
   border-radius: clamp(16px, 2.5vw, 36px);
   overflow: hidden;
@@ -526,57 +444,4 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-@media (max-width: 800px) {
-  .featured-work {
-    padding: clamp(2.5rem, 7vh, 4rem) 0 clamp(4rem, 9vh, 6rem);
-  }
-
-  .project-list {
-    width: calc(100vw - 2.5rem);
-    margin-top: clamp(2.5rem, 5vh, 4rem);
-  }
-
-  .project-entry {
-    margin-top: clamp(4rem, 10vh, 7rem);
-  }
-
-  .project-separator {
-    margin-top: clamp(2.8rem, 6.6vh, 4.4rem);
-  }
-
-  .project-separator + .project-entry {
-    margin-top: clamp(2.8rem, 6.6vh, 4.4rem);
-  }
-
-  .project-separator-image {
-    width: clamp(115px, 42vw, 185px);
-  }
-
-  .project-separator-image-large {
-    width: clamp(170px, 70vw, 310px);
-  }
-
-  .project-heading-link {
-    gap: 0.65rem;
-  }
-
-  .project-description {
-    margin-top: 0.9rem;
-  }
-
-  .project-media {
-    flex-wrap: wrap;
-    min-height: auto;
-    margin-top: clamp(2rem, 5vh, 3.5rem);
-  }
-
-  .project-image {
-    max-height: none;
-  }
-
-  .project-media-phone .project-frame {
-    width: min(42vw, 190px);
-  }
 }
