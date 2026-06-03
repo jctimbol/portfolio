@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "JAY TIMBOL",
   description: "Portfolio of Jay Timbol",
   openGraph: {
+    url: "https://www.jaytimbol.tech",
     title: "JAY TIMBOL",
     description: "Portfolio of Jay Timbol",
     images: [
