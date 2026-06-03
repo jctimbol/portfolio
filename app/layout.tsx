@@ -1,14 +1,15 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.jaytimbol.tech"),
   title: "JAY TIMBOL",
-  description: "Portfolio of Jay Timbol",
+  description: "Jay Timbol's Portfolio",
   openGraph: {
     url: "https://www.jaytimbol.tech",
     title: "JAY TIMBOL",
-    description: "Portfolio of Jay Timbol",
+    description: "Jay Timbol's Portfolio",
     images: [
       {
         url: "/share.png",
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "JAY TIMBOL",
-    description: "Portfolio of Jay Timbol",
+    description: "Jay Timbol's Portfolio",
     images: ["/share.png"],
   },
 };
@@ -40,7 +41,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
