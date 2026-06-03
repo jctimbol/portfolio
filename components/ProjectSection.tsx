@@ -22,6 +22,7 @@ type Project = {
   name: string;
   event: string;
   description: string;
+  award?: string;
   href: string;
   images: ProjectImage[];
 };
@@ -29,9 +30,11 @@ type Project = {
 const projects: Project[] = [
   {
     name: "FIREPROOF",
-    event: "SCU Hack for Humanity 2026",
+    event: "SCU Hack for Humanity 2026 ♕",
     description:
       "Voice-powered real-time wildfire evacuation assistance using React Native, FastAPI, vLLM, pgvector, ElevenLabs, and Docker",
+    award:
+      "Awarded Best Graduate Hack and Top 8 Finalist out of 79 projects and 490 participants",
     href: "https://devpost.com/software/fire-proof",
     images: [
       {
@@ -63,9 +66,11 @@ const projects: Project[] = [
   },
   {
     name: "PERCH",
-    event: "UCSC CruzHacks 2026",
+    event: "UCSC CruzHacks 2026 ♕",
     description:
       "Adaptive math tutor using Next.js, FastAPI, MongoDB, Gemini 2.5 Flash, Pix2Text, and SymPy",
+    award:
+      "Awarded 2nd Best Opennote (YC S25) Productivity Hack out of 28 projects and 81 participants",
     href: "https://devpost.com/software/perch-eq5sim",
     images: [
       {
@@ -121,7 +126,15 @@ export default function ProjectSection() {
                 <span className="project-name">{project.name}</span>
                 <span className="project-event">{project.event}</span>
               </a>
-              <p className="project-description">{project.description}</p>
+              <p className="project-description">
+                {project.description}
+                {project.award ? (
+                  <>
+                    <br />
+                    {project.award}
+                  </>
+                ) : null}
+              </p>
               <div
                 className={`project-media ${
                   project.images.some((image) => image.kind === "phone")
